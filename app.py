@@ -1030,7 +1030,7 @@ with tab4:
 
 def agent_panel():
     """The chat: question box, answers, Apply buttons and follow-ups."""
-    st.subheader("Ask the model")
+    st.subheader("BVGEC NPV chatbot")
     st.caption("Ask a what-if, ask why a result is what it is, or ask for suggestions. Answers use the same "
                "calculation as the rest of the app and start from the settings on the left.")
     chat = st.session_state.setdefault("chat", [])
@@ -1079,5 +1079,5 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 with st.container(key="agent_float"):
-    with st.popover("💬 Ask the model"):
+    with st.popover("💬 BVGEC NPV chatbot"):
         agent_panel()
