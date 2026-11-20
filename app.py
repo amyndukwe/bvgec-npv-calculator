@@ -241,7 +241,7 @@ def breakeven_rate(p):
     return (lo + hi) / 2
 
 
-# ---------------------------------------------------------------- the "Ask the model" assistant
+# ---------------------------------------------------------------- the "BVGEC NPV chatbot" assistant
 # Rule-based: it reads a question, changes the assumptions on a COPY of the inputs and runs the
 # same calculate() as the rest of the app. It never makes up a number, and every answer lists
 # the steps it took.
