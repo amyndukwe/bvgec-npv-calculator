@@ -956,8 +956,8 @@ else:
     st.success(md("NPV is positive and retained earnings stay above $0 every year, so members "
                   "can be paid from the project's own earnings."))
 
-tab1, tab2, tab3, tab4, tab5 = st.tabs(["Over time", "Year-by-year table", "What moves NPV",
-                                        "How it's calculated", "Ask the model"])
+tab1, tab2, tab3, tab4 = st.tabs(["Over time", "Year-by-year table", "What moves NPV",
+                                  "How it's calculated"])
 
 
 def apply_changes(ch):
@@ -1027,7 +1027,9 @@ with tab4:
 - The **energy rate increase** is optional and not part of the Excel projection.
 """)
 
-with tab5:
+
+def agent_panel():
+    """The chat: question box, answers, Apply buttons and follow-ups."""
     st.subheader("Ask the model")
     st.caption("Ask a what-if, ask why a result is what it is, or ask for suggestions. Answers use the same "
                "calculation as the rest of the app and start from the settings on the left.")
@@ -1066,3 +1068,16 @@ with tab5:
                     st.button(f, key=f"fu_{i}_{j}", on_click=ask, args=(f,))
     if chat:
         st.button("Clear conversation", on_click=lambda: st.session_state.update(chat=[]))
+
+
+# Floating button in the bottom-right corner that opens the chat on top of any tab
+st.markdown("""
+<style>
+.st-key-agent_float { position: fixed; bottom: 24px; right: 24px; z-index: 1000; width: auto; }
+.st-key-agent_float button { border-radius: 999px; box-shadow: 0 4px 14px rgba(0,0,0,.25); }
+[data-testid="stPopoverBody"] { width: min(560px, 92vw); max-height: 75vh; overflow-y: auto; }
+</style>
+""", unsafe_allow_html=True)
+with st.container(key="agent_float"):
+    with st.popover("💬 Ask the model"):
+        agent_panel()
